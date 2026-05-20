@@ -1,5 +1,5 @@
 import React from 'react';
-import "./LandingPage.css";
+import "./Landingpage.css";
 import bgImage1 from "./Callora1.jpg";
 import Auth from './Auth';
 import { Link, useNavigate } from "react-router-dom";
