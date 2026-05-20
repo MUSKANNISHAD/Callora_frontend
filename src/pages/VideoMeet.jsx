@@ -15,7 +15,9 @@ import ChatIcon from '@mui/icons-material/Chat'
 // import server from '../environment';
 
 // const server_url = server;
-const server_url = "http://localhost:3000";
+// const server_url = "http://localhost:3000";
+const server_url = "https://callora-backend-7q3e.onrender.com";
+
 
 
 var connections = {};
