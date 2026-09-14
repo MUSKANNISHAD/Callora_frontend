@@ -13,11 +13,8 @@ import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
 import ChatIcon from '@mui/icons-material/Chat'
 import { useNavigate } from 'react-router-dom';
 
-// import server from '../environment';
 
-// const server_url = server;
-const server_url = "http://localhost:3000";
-// const server_url = "https://callora-backend-7q3e.onrender.com";
+const server_url = "https://callora-backend-g7t2.onrender.com";
 
 
 
