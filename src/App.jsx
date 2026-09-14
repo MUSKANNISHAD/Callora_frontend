@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import LandingPage from './pages/LandingPage.jsx';
 import Auth from './pages/Auth.jsx';
-import { MyContext, MyProvider } from "./pages/AuthContext";
+import { MyContext, MyProvider } from "./pages/AuthContext.jsx";
 import VideoMeet from './pages/VideoMeet.jsx';
 
 
@@ -11,7 +11,6 @@ export default function App() {
     <div className='App'>
       <Router>
         <MyProvider>
-
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/auth" element={<Auth />} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Landingpage.css";
-import bgImage1 from "./Callora1.jpg";
-import Auth from './Auth';
+import bgImage1 from "../../public/Callora1.jpg";
+import auth from './Auth';
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -14,17 +14,15 @@ export default function LandingPage() {
 
             <div className="overlay"></div>
 
-            {/* NAVBAR */}
             <nav className="navbar">
                 <h2 className="logo">Callora</h2>
                 <div className="nav-buttons">
                     <button className="btn secondary">Join as Guest</button>
-                    <button onClick={() => { router("/Auth") }} className="btn outline">Register</button>
-                    <button onClick={() => { router("/Auth") }} className="btn primary">Login</button>
+                    <button onClick={() => { router("/auth") }} className="btn outline">Register</button>
+                    <button onClick={() => { router("/auth") }} className="btn primary">Login</button>
                 </div>
             </nav>
 
-            {/* HERO SECTION */}
             <div className="hero">
                 <div className="left">
                     <h1 className="left-heading">
@@ -34,7 +32,7 @@ export default function LandingPage() {
                         Cover distance with Callora — fast, simple, and secure.
                     </p>
                     <button onClick={() => {
-                        router("/Auth")
+                        router("/auth")
                     }} className="btn primary big">Get Started</button>
                 </div>
             </div>

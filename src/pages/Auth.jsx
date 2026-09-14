@@ -1,56 +1,124 @@
-import React from 'react'
+import React from 'react';
 import { useState, useEffect } from 'react';
-import "./Auth.css";
+import styles from "./Auth.module.css";
 import { MyContext } from "./AuthContext.jsx";
 import { useContext } from 'react';
 import { Toaster } from "react-hot-toast";
+import TextField from "@mui/material/TextField";
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Auth() {
-    const { isLogin, setIsLogin } = useContext(MyContext);
+
+    const router = useNavigate();
+    const { isSignup, setIsSignup } = useContext(MyContext);
+
+    const { username, setUserName } = useContext(MyContext);
+    const { password, setPassword } = useContext(MyContext);
+    const { email, setEmail } = useContext(MyContext);
+    const { isLogintrue, setIsLoginTrue } = useContext(MyContext);
+    // console.log("is login is :", isLogintrue);
+
+
+    const { handleRegister } = useContext(MyContext);
+    const { handleLogin } = useContext(MyContext);
+
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            console.log("is user logged in ", setIsLoginTrue);
+            router("/:url");
+        }
+    }, [])
+
+    useEffect(() => {
+        if (localStorage.getItem('token') === null) {
+            router("/auth");
+        }
+    })
+    // { console.log("message is", message) }
+
 
     return (
-        <div className="auth-container">
-            <Toaster position="right" />
-            <div className="auth-card">
-                <h1>{isLogin ? "Signup with us" : "Login"}</h1>
-                {console.log(isLogin)}
+        <>
+            {/* <Toaster position="top-center" /> */}
+            <div className={styles.authContainer}>
+                <Toaster position="top-right" />
+                <div className={styles.authcard}>
+                    <div className={styles.logo}>
+                        Callora
+                    </div>
+                    <h1>
+                        {isSignup ? "Create your account" : "Welcome back"}
+                    </h1>
+                    <p className={styles.subtitle}>
+                        {isSignup
+                            ? "Join Callora and get started today."
+                            : "Login to continue to Callora."
+                        }
+                    </p>
 
-                {
-                    isLogin ? (
-                        <form action="/signup" method="POST" noValidate>
+                    <div className={styles.form}  >
+                        {isSignup && (
+                            <TextField
+                                onChange={(e) => setUserName(e.target.value)}
+                                fullWidth
+                                label="Username"
+                                type="text"
+                                variant="outlined"
+                                margin="normal"
+                                className={styles.formControl}
+                            />
+                        )}
 
-                            <label htmlFor="username" className="form-label">Username</label>
-                            <input type="text" name="username" placeholder="Enter username" id="username" className="form-control" required />
+                        <TextField
+                            onChange={(e) => setEmail(e.target.value)}
+                            fullWidth
+                            label="email"
+                            type="email"
+                            variant="outlined"
+                            margin="normal"
+                            className={styles.formControl}
+                        />
 
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" name="email" placeholder="Enter email" id="email" className="form-control" required />
-
-                            <label htmlFor="password" className="form-label">Password</label>
-                            <input type="password" name="password" placeholder="Enter password" id="password" className="form-control" required />
-
-                            <button type="submit" className="auth-btn">Sign Up</button>
-                        </form>) : (
-                        <form action="/login" method="POST" noValidate>
-
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <br></br>
-
-                            <input type="email" name="email" placeholder="Enter email" id="email" className="form-control" required />
-                            <label htmlFor="password" className="form-label">Password</label>
-                            <br></br>
-
-                            <input type="password" name="password" placeholder="Enter password" id="password" className="form-control" required />
-
-                            <button type="submit" className="auth-btn">Login</button>
-                        </form>
-                    )
-                }
-
-                <p className="toggle-text" onClick={() => setIsLogin(!isLogin)}>
-                    {isLogin ? "Already have an account? " : "Don't have an account? "}
-                    <span>{isLogin ? "Login" : "Sign Up"}</span>
-                </p>
-            </div>
-        </div>
+                        <TextField
+                            onChange={(e) => setPassword(e.target.value)}
+                            fullWidth
+                            label="Password"
+                            type="password"
+                            variant="outlined"
+                            margin="normal"
+                            className={styles.formControl}
+                        />
+                        {
+                            isSignup ?
+                                <Button onClick={
+                                    handleRegister
+                                } className={styles.authBtn}
+                                    variant="contained">Create Account
+                                </Button> :
+                                <Button onClick={
+                                    handleLogin
+                                }
+                                    className={styles.authBtn}
+                                    variant="contained">Sign In
+                                </Button>
+                        }
+                    </div>
+                    <p
+                        className={styles.toggleText}
+                        onClick={() => setIsSignup(!isSignup)}
+                    >
+                        {isSignup
+                            ? "Already have an account? "
+                            : "Don't have an account? "
+                        }
+                        <span>
+                            {isSignup ? "Login" : "Sign Up"}
+                        </span>
+                    </p>
+                </div>
+            </div >
+        </>
     );
 }

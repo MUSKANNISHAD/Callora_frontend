@@ -4,7 +4,6 @@ import { Badge, IconButton, TextField } from '@mui/material';
 import { Button } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import VideocamOffIcon from '@mui/icons-material/VideocamOff'
-// import styles from "../styles/videoComponent.module.css";
 import "./VideoMeet.css";
 import CallEndIcon from '@mui/icons-material/CallEnd';
 import MicIcon from '@mui/icons-material/Mic';
@@ -12,11 +11,13 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
 import ChatIcon from '@mui/icons-material/Chat'
+import { useNavigate } from 'react-router-dom';
+
 // import server from '../environment';
 
 // const server_url = server;
-// const server_url = "http://localhost:3000";
-const server_url = "https://callora-backend-7q3e.onrender.com";
+const server_url = "http://localhost:3000";
+// const server_url = "https://callora-backend-7q3e.onrender.com";
 
 
 
@@ -32,6 +33,8 @@ export default function VideoMeetComponent() {
 
     var socketRef = useRef();
     let socketIdRef = useRef();
+
+    const router = useNavigate();
 
     let localVideoref = useRef();
 
@@ -74,6 +77,13 @@ export default function VideoMeetComponent() {
         getPermissions();
 
     })
+
+    useEffect(() => {
+        if (localStorage.getItem('token') === null) {
+            router("/auth");
+        }
+    }, []);
+
 
     let getDislayMedia = () => {
         if (screen) {
@@ -456,16 +466,67 @@ export default function VideoMeetComponent() {
 
             {askForUsername === true ?
 
-                <div>
+                <div className="lobbyContainer">
+                    <div className="lobbyCard">
+                        <div className="header">
+                            <div className="logo">Callora</div>
 
+                            <div className="status">
+                                <span className="statusDot"></span>
+                                Ready to connect
+                            </div>
+                        </div>
 
-                    <h2>Enter into Lobby </h2>
-                    <TextField id="outlined-basic" label="Username" value={username} onChange={e => setUsername(e.target.value)} variant="outlined" />
-                    <Button variant="contained" onClick={connect}>Connect</Button>
+                        <div className="content">
+                            <div className="titleSection">
+                                <h1>Ready to connect?</h1>
+                                <p>
+                                    Enter your username and join the Callora lobby.
+                                </p>
+                            </div>
+                            <div className="videoContainer">
 
+                                <video
+                                    ref={localVideoref}
+                                    autoPlay
+                                    muted
+                                    playsInline
+                                    className="video"
+                                />
 
-                    <div>
-                        <video ref={localVideoref} autoPlay muted></video>
+                                <div className="videoOverlay">
+                                    <span className="cameraIcon">●</span>
+                                    Camera preview
+                                </div>
+
+                            </div>
+                            <div className="inputSection">
+
+                                <TextField
+                                    fullWidth
+                                    label="Username"
+                                    value={username}
+                                    onChange={e => setUsername(e.target.value)}
+                                    variant="outlined"
+                                    className="usernameInput"
+                                />
+
+                                <Button
+                                    variant="contained"
+                                    onClick={connect}
+                                    className="connectButton"
+                                >
+                                    Join Lobby
+                                    <span className="arrow">→</span>
+                                </Button>
+
+                            </div>
+
+                        </div>
+                        <div className="footer">
+                            🔒 Your connection is private and secure
+                        </div>
+
                     </div>
 
                 </div> :
@@ -501,7 +562,9 @@ export default function VideoMeetComponent() {
 
 
                         </div>
-                    </div> : <></>}
+                    </div> :
+                        <></>
+                    }
 
 
                     <div className="buttonContainers">
