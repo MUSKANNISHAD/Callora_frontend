@@ -31,6 +31,7 @@ export const MyProvider = ({ children }) => {
             console.log("responce is", response.data);
             console.log("responce is", response.data.message);
             toast.success(response.data.message);
+            setIsSignup(false);
         } catch (err) {
             toast.error('Server error');
             console.log(err);
