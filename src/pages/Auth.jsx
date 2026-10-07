@@ -24,18 +24,20 @@ export default function Auth() {
     const { handleRegister } = useContext(MyContext);
     const { handleLogin } = useContext(MyContext);
 
-    useEffect(() => {
-        if (localStorage.getItem("token")) {
-            console.log("is user logged in ", setIsLoginTrue);
-            router("/:url");
-        }
-    }, [])
+    
+    
+    // useEffect(() => {
+    //     if (localStorage.getItem("token")) {
+    //         console.log("is user logged in ", setIsLoginTrue);     1st change
+    //         router("/:url");
+    //     }
+    // }, [])
 
-    useEffect(() => {
-        if (localStorage.getItem('token') === null) {
-            router("/auth");
-        }
-    })
+    // useEffect(() => {
+    //     if (localStorage.getItem('token') === null) {
+    //         router("/auth");
+    //     }
+    // })
     // { console.log("message is", message) }
 
 

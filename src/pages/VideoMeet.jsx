@@ -10,13 +10,11 @@ import MicIcon from '@mui/icons-material/Mic';
 import MicOffIcon from '@mui/icons-material/MicOff';
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
-import ChatIcon from '@mui/icons-material/Chat'
+import ChatIcon from '@mui/icons-material/Chat';
 import { useNavigate } from 'react-router-dom';
 
 
 const server_url = "https://callora-backend-g7t2.onrender.com";
-
-
 
 var connections = {};
 
@@ -73,20 +71,20 @@ export default function VideoMeetComponent() {
         // console.log("HELLO")
         getPermissions();
 
-    })
+    }, [])
 
-    useEffect(() => {
-        if (localStorage.getItem('token') === null) {
-            router("/auth");
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (localStorage.getItem('token') === null) {
+    //         router("/auth");           2nd change
+    //     }
+    // }, []);
 
 
     let getDislayMedia = () => {
         if (screen) {
             if (navigator.mediaDevices.getDisplayMedia) {
                 navigator.mediaDevices.getDisplayMedia({ video: true, audio: true })
-                    .then(getDislayMediaSuccess)
+                    .then(getDisplayMediaSuccess)
                     .then((stream) => { })
                     .catch((e) => console.log(e))
             }
@@ -148,8 +146,6 @@ export default function VideoMeetComponent() {
         connectToSocketServer();
 
     }
-
-
 
 
     let getUserMediaSuccess = (stream) => {
@@ -217,10 +213,7 @@ export default function VideoMeetComponent() {
     }
 
 
-
-
-
-    let getDislayMediaSuccess = (stream) => {
+    let getDisplayMediaSuccess = (stream) => {
         console.log("HERE")
         try {
             window.localStream.getTracks().forEach(track => track.stop())

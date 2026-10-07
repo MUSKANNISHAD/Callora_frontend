@@ -121,7 +121,7 @@ export default function LandingPage() {
                             <span className="arrow">→</span>
                         </button>
 
-                        <button className="guest-btn">
+                        <button className="guest-btn" onClick={() => router("/:url")} >
                             Join as Guest
                         </button>
 
