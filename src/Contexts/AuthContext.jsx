@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import httpStatus from "http-Status";
+import httpStatus from "http-status";
 import { ClientServer } from "../ClientServer.jsx";
 
 
