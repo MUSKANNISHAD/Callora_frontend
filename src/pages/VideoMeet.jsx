@@ -73,12 +73,6 @@ export default function VideoMeetComponent() {
 
     }, [])
 
-    // useEffect(() => {
-    //     if (localStorage.getItem('token') === null) {
-    //         router("/auth");           2nd change
-    //     }
-    // }, []);
-
 
     let getDislayMedia = () => {
         if (screen) {
@@ -410,7 +404,7 @@ export default function VideoMeetComponent() {
             let tracks = localVideoref.current.srcObject.getTracks()
             tracks.forEach(track => track.stop())
         } catch (e) { }
-        window.location.href = "/"
+        window.location.href = "/home"
     }
 
     let openChat = () => {

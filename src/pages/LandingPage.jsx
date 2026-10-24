@@ -15,7 +15,6 @@ export default function LandingPage() {
     return (
         <div className="landing-page">
 
-            {/* Background */}
             <img
                 src={bgImage1}
                 className="bg-img"
@@ -24,7 +23,6 @@ export default function LandingPage() {
 
             <div className="overlay"></div>
 
-            {/* ================= NAVBAR ================= */}
 
             <nav className="navbar">
 
@@ -32,7 +30,6 @@ export default function LandingPage() {
                     Callora
                 </div>
 
-                {/* Desktop navigation */}
                 <div className={`nav-content ${menuOpen ? "open" : ""}`}>
 
                     <div className="nav-links">
@@ -73,7 +70,6 @@ export default function LandingPage() {
 
                 </div>
 
-                {/* Mobile menu button */}
                 <button
                     className="menu-toggle"
                     onClick={() => setMenuOpen(!menuOpen)}
@@ -87,11 +83,9 @@ export default function LandingPage() {
             </nav>
 
 
-            {/* ================= HERO ================= */}
 
             <main className="hero" id="home">
 
-                {/* Left side */}
 
                 <div className="hero-content">
 
@@ -127,7 +121,6 @@ export default function LandingPage() {
 
                     </div>
 
-                    {/* Trust indicators */}
 
                     <div className="trust-row">
 
@@ -160,15 +153,12 @@ export default function LandingPage() {
                 </div>
 
 
-                {/* ================= PRODUCT MOCKUP ================= */}
 
                 <div className="hero-visual">
 
                     <div className="glow"></div>
 
                     <div className="call-card">
-
-                        {/* Card header */}
 
                         <div className="call-header">
 
@@ -195,7 +185,6 @@ export default function LandingPage() {
                         </div>
 
 
-                        {/* Video area */}
 
                         <div className="video-area">
 
@@ -214,7 +203,6 @@ export default function LandingPage() {
                         </div>
 
 
-                        {/* Call controls */}
 
                         <div className="call-info">
 
@@ -244,7 +232,6 @@ export default function LandingPage() {
                     </div>
 
 
-                    {/* Floating cards */}
 
                     <div className="floating-card connection-card">
 
@@ -278,7 +265,6 @@ export default function LandingPage() {
             </main>
 
 
-            {/* ================= FEATURES ================= */}
 
             <section
                 className="features"
@@ -335,7 +321,6 @@ export default function LandingPage() {
             </section>
 
 
-            {/* Dummy anchor sections so navbar links have destinations */}
 
             <section id="how-it-works" className="anchor-section">
             </section>

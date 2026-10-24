@@ -471,10 +471,6 @@
     }
 
 
-    /* -------------------------
-       CONFERENCE VIDEOS
-       ------------------------- */
-
     .conferenceView {
         display: grid;
 
@@ -505,12 +501,6 @@
 
         width: 100%;
 
-        /*
-         * IMPORTANT:
-         * The video gets smaller with the
-         * available space instead of being
-         * cropped by a fixed height.
-         */
         aspect-ratio: 16 / 9;
 
         height: auto;
@@ -521,18 +511,10 @@
     }
 
 
-    /* -------------------------
-       WHEN CHAT IS OPEN
-       ------------------------- */
-
     .meetVideoContainer:has(.chatRoom) .conferenceView {
         width: 52%;
     }
 
-
-    /* -------------------------
-       MY VIDEO
-       ------------------------- */
 
     .meetUserVideo {
         left: 10px;
@@ -547,11 +529,6 @@
 
         z-index: 25;
     }
-
-
-    /* -------------------------
-       BOTTOM CONTROLS
-       ------------------------- */
 
     .buttonContainers {
         left: 0;
@@ -577,9 +554,6 @@
     }
 
 
-    /* -------------------------
-       CHAT
-       ------------------------- */
 
     .chatRoom {
         top: 0;
@@ -634,10 +608,6 @@
     }
 
 
-    /* -------------------------
-       CHAT INPUT
-       ------------------------- */
-
     .chattingArea {
         display: flex;
 
@@ -680,10 +650,6 @@
         font-size: 11px;
     }
 
-
-    /* -------------------------
-       LOBBY
-       ------------------------- */
 
     .lobbyContainer {
         min-height: 100dvh;
